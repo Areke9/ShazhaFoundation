@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<b><h2>Month progress</h2></b>
+
+<hr/>
+
+<div class="progress" role="progressbar">
+    <div class="progress-bar progress-bar-success" th:style="'width:' + ${paidPerc} + '%'"></div>
+    <div class="progress-bar progress-bar-danger" th:style="'width:' + ${notPaidPerc} + '%'"></div>
+</div>
+
+<hr/>
+
+<b th:text="'Otkizgender sany: ' + ${statusPaid}">status</b>
+
+<div th:each="person : ${party}">
+    <th:block th:switch="${person.getStatus}">
+        <div th:case="'paid'">
+            <a th:href="@{/party/{id}(id=${person.getId()})}"
+               th:text="${person.getName()}">user</a> - Otkizdi
+        </div>
+    </th:block>
+</div>
+
+<br/>
+
+<b th:text="'Otkizbegender sany: ' + ${statusNotPaid}">status</b>
+
+<div th:each="person : ${party}">
+    <th:block th:switch="${person.getStatus}">
+        <div th:case="'not paid'">
+            <a th:href="@{/party/{id}(id=${person.getId()})}"
+               th:text="${person.getName()}">user</a> - Otkizbedi
+        </div>
+    </th:block>
+</div>
+
+<br/>
+
+</body>
+</html>
