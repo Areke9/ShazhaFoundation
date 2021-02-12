@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit person</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/party/{id}(id=${person.getId()})}" th:object="${person}">
+    <label for="name">Esimi: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    <br/>
+    <label for="phoneNumber">Telefon nomeri: </label>
+    <input type="text" th:field="*{phoneNumber}" id="phoneNumber"/>
+    <div style="color:red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone number Error</div>
+    <br/>
+    <input type="submit" value="Ozgertu"/>
+</form>
+
+</body>
+</html>

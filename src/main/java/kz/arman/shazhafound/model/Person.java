@@ -1,9 +1,23 @@
 package kz.arman.shazhafound.model;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Person {
     private int id;
+
+    @NotEmpty(message = "Esimin engiziniz")
+    @Size(min=2, max=20,
+            message = "Adam esimi 2 zhane 20 arip arasinda boluy tiys")
     private String name;
+
+    @NotEmpty(message = "Telefon nomerin engiziniz")
+    @Pattern(regexp="(^$|[0-9]{10})",
+            message = "Nomerdi durys engiziniz")
     private String phoneNumber;
+
     private String status;
 
     public Person(){}

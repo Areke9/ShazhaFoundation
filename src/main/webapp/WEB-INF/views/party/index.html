@@ -6,7 +6,7 @@
 </head>
 <body>
 
-List of people
+Koldaushylar
 <div th:each="person : ${party}">
     <a th:href="@{/party/{id}(id=${person.getId()})}"
        th:text="${person.getName()}">user</a>
