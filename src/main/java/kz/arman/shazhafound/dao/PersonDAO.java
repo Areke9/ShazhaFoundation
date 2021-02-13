@@ -35,7 +35,8 @@ public class PersonDAO {
     }
 
     public void saveNewPerson(Person person){
-        jdbcTemplate.update("INSERT INTO Person VALUES (1, ?, ?, 'not paid')",
+        jdbcTemplate.update(
+                "INSERT INTO Person (name, phone_number, status) VALUES (?, ?, 'not paid')",
                 person.getName(), person.getPhoneNumber());
     }
 
